@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Models", "EmployeeManagement.Models\EmployeeManagement.Models.csproj", "{B3967B9E-4E3B-4705-9982-BA3A11286141}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Web", "EmployeeManagement.Web\EmployeeManagement.Web.csproj", "{104388E9-9FBE-4123-B78F-E4EF2A5D03E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3967B9E-4E3B-4705-9982-BA3A11286141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3967B9E-4E3B-4705-9982-BA3A11286141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3967B9E-4E3B-4705-9982-BA3A11286141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3967B9E-4E3B-4705-9982-BA3A11286141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104388E9-9FBE-4123-B78F-E4EF2A5D03E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104388E9-9FBE-4123-B78F-E4EF2A5D03E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104388E9-9FBE-4123-B78F-E4EF2A5D03E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104388E9-9FBE-4123-B78F-E4EF2A5D03E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FE4DE11-F4BF-4AB9-A6BD-C7F1EE6BBCCF}
+	EndGlobalSection
+EndGlobal
