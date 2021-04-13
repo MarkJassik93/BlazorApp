@@ -3,8 +3,6 @@ using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EmployeeManagement.Api.Controllers
@@ -21,11 +19,11 @@ namespace EmployeeManagement.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public async Task<ActionResult> GetEmployees()
         {
             try
             {
-                return (await employeeRepository.GetEmployees()).ToList();
+                return Ok(await employeeRepository.GetEmployees());
             }
             catch (Exception)
             {
@@ -41,7 +39,10 @@ namespace EmployeeManagement.Api.Controllers
             {
                 var result = await employeeRepository.GetEmployee(id);
 
-                if (result == null) return NotFound();
+                if (result == null)
+                {
+                    return NotFound();
+                }
 
                 return result;
             }
@@ -49,6 +50,27 @@ namespace EmployeeManagement.Api.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     "Error retrieving data from the database");
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Employee>>
+            CreateEmployee([FromBody] Employee employee)
+        {
+            try
+            {
+                if (employee == null)
+                    return BadRequest();
+
+                var createdEmployee = await employeeRepository.AddEmployee(employee);
+
+                return CreatedAtAction(nameof(GetEmployee),
+                    new { id = createdEmployee.EmployeeId }, createdEmployee);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error creating new employee record");
             }
         }
     }
