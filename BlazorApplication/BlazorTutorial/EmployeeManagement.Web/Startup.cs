@@ -25,12 +25,11 @@ namespace EmployeeManagement.Web
             services.AddServerSideBlazor();
             services.AddHttpClient<IEmployeeService, EmployeeService>(client =>
             {
-
                 client.BaseAddress = new Uri("https://localhost:44313/");
             });
             services.AddHttpClient<IDepartmentService, DepartmentService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:44379/");
+                client.BaseAddress = new Uri("https://localhost:44313/");
 
             });
         }
