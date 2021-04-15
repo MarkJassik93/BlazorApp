@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeManagement.Models
 {
@@ -6,6 +7,7 @@ namespace EmployeeManagement.Models
     {
 
         public int DepartmentId { get; set; }
+        [Required]
         public string DepartmentName { get; set; }
     }
 }
