@@ -14,6 +14,8 @@ namespace EmployeeManagement.Web.Pages
         [Inject]
         public IEmployeeService EmployeeService { get; set; }
 
+        public string PageHeaderText { get; set; }
+
         private Employee Employee { get; set; } = new Employee();
         public EditEmployeeModel EditEmployeeModel { get; set; } = new EditEmployeeModel();
 
@@ -37,10 +39,12 @@ namespace EmployeeManagement.Web.Pages
 
             if (employeeId != 0)
             {
+                PageHeaderText = "Edit Employee";
                 Employee = await EmployeeService.GetEmployee(int.Parse(Id));
             }
             else
             {
+                PageHeaderText = "Create Employee";
                 Employee = new Employee
                 {
                     DepartmentId = 1,
@@ -52,16 +56,6 @@ namespace EmployeeManagement.Web.Pages
             Departments = (await DepartmentService.GetDepartments()).ToList();
             Mapper.Map(Employee, EditEmployeeModel);
 
-            //EditEmployeeModel.EmployeeId = Employee.EmployeeId;
-            //EditEmployeeModel.FirstName = Employee.FirstName;
-            //EditEmployeeModel.LastName = Employee.LastName;
-            //EditEmployeeModel.Email = Employee.Email;
-            //EditEmployeeModel.ConfirmEmail = Employee.Email;
-            //EditEmployeeModel.DateOfBrith = Employee.DateOfBrith;
-            //EditEmployeeModel.Gender = Employee.Gender;
-            //EditEmployeeModel.PhotoPath = Employee.PhotoPath;
-            //EditEmployeeModel.DepartmentId = Employee.DepartmentId;
-            //EditEmployeeModel.Department = Employee.Department;
         }
         protected async Task HandleValidSubmit()
         {
