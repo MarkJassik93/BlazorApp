@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EmployeeManagement.Api.Models
+namespace EmployeeManagement.Web.Models
 {
     public class EmployeeProfile : Profile
     {
@@ -14,7 +14,6 @@ namespace EmployeeManagement.Api.Models
             CreateMap<Employee, EditEmployeeModel>()
                 .ForMember(dest => dest.ConfirmEmail,
                             opt => opt.MapFrom(src => src.Email));
-
             CreateMap<EditEmployeeModel, Employee>();
         }
     }

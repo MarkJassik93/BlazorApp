@@ -2,7 +2,7 @@
 
 @inherits EditEmployeeBase
 
-<EditForm Model="@EditEmployeeModel" OnInvalidSubmit="HandleValidSubmit">
+<EditForm Model="@EditEmployeeModel" OnValidSubmit="HandleValidSubmit">
     <ObjectGraphDataAnnotationsValidator />
     <h3>Edit Employee</h3>
     <hr />
@@ -85,7 +85,7 @@
         <label for="deptName" class="col-sm-2 col-form-label">
             Department Name
         </label>
-        <div id="deptName" class="col-sm-10">
+        <div id ="deptName" class="col-sm-10" >
             <InputText @bind-Value="EditEmployeeModel.Department.DepartmentName"
                        class="form-control" />
             <ValidationMessage For="@(() => EditEmployeeModel.Department.DepartmentName)" />

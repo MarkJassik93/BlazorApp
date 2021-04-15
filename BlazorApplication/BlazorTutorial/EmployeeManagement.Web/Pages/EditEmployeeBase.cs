@@ -15,7 +15,6 @@ namespace EmployeeManagement.Web.Pages
         public IEmployeeService EmployeeService { get; set; }
 
         private Employee Employee { get; set; } = new Employee();
-
         public EditEmployeeModel EditEmployeeModel { get; set; } = new EditEmployeeModel();
 
         [Inject]
@@ -25,8 +24,12 @@ namespace EmployeeManagement.Web.Pages
 
         [Parameter]
         public string Id { get; set; }
+
         [Inject]
         public IMapper Mapper { get; set; }
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -46,7 +49,15 @@ namespace EmployeeManagement.Web.Pages
             //EditEmployeeModel.DepartmentId = Employee.DepartmentId;
             //EditEmployeeModel.Department = Employee.Department;
         }
-        protected void HandleValidSubmit()
-        { }
+        protected async Task HandleValidSubmit()
+        {
+            Mapper.Map(EditEmployeeModel, Employee);
+            var result = await EmployeeService.UpdateEmployee(Employee);
+
+            if (result != null)
+            {
+                NavigationManager.NavigateTo("/");
+            }
+        }
     }
 }

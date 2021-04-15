@@ -1,4 +1,4 @@
-using EmployeeManagement.Api.Models;
+using EmployeeManagement.Web.Models;
 using EmployeeManagement.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

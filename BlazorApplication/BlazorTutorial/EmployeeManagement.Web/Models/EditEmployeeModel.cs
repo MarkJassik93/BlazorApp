@@ -18,7 +18,7 @@ namespace EmployeeManagement.Models
         [EmailDomainValidator(AllowedDomain = "pragimtech.com",
             ErrorMessage = "Only PragimTech.com is allowed")]
         public string Email { get; set; }
-        [CompareProperty("Email", ErrorMessage ="Email and Confirm Email must match")]
+        [CompareProperty("Email", ErrorMessage = "Email and Confirm Email must match")]
         public string ConfirmEmail { get; set; }
         public DateTime DateOfBrith { get; set; }
         public Gender Gender { get; set; }
