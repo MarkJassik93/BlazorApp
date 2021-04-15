@@ -20,16 +20,13 @@ namespace EmployeeManagement.Web.Pages
 
         public List<Department> Departments { get; set; } = new List<Department>();
 
-        public string DepartmentId { get; set; }
-
         [Parameter]
         public string Id { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
             Employee = await EmployeeService.GetEmployee(int.Parse(Id));
-            Departments = (await DepartmentService.GetDepartments()).ToList();
-            DepartmentId = Employee.DepartmentId.ToString();
+            Departments = (await DepartmentService.GetDepartments()).ToList();   
         }
     }
 }
