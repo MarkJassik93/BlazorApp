@@ -39,6 +39,7 @@ namespace EmployeeManagement.Web.Pages
 
             if (employeeId != 0)
             {
+
                 PageHeaderText = "Edit Employee";
                 Employee = await EmployeeService.GetEmployee(int.Parse(Id));
             }
@@ -75,6 +76,12 @@ namespace EmployeeManagement.Web.Pages
             {
                 NavigationManager.NavigateTo("/");
             }
+        }
+
+        protected async Task Delete_Click()
+        {
+            await EmployeeService.DeleteEmployee(Employee.EmployeeId);
+            NavigationManager.NavigateTo("/");
         }
     }
 }
