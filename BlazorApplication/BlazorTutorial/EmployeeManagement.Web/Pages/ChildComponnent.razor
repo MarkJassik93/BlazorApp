@@ -1,10 +1,8 @@
-﻿<input id="firstName" placeholder="Default Placeholder" @attributes="InputAttributes" value="@Value" />
+﻿<h1 style="@ElementStyle">-Child Component</h1>
+
+<GrandChildComponent></GrandChildComponent>
 
 @code {
-    [Parameter(CaptureUnmatchedValues = true)]
-    public Dictionary<string, object> InputAttributes { get; set; } =
-        new Dictionary<string, object>();
-
-    [Parameter]
-    public string Value { get; set; } = "Child Value";
+    [CascadingParameter]
+    public string ElementStyle { get; set; }
 }
