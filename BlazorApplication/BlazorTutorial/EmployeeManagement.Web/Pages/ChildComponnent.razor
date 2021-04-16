@@ -1,16 +1,10 @@
-﻿<input id="firstName" @attributes="InputAttributes" value="@Value" />
+﻿<input id="firstName" placeholder="Default Placeholder" @attributes="InputAttributes" value="@Value" />
 
 @code {
-    [Parameter]
+    [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object> InputAttributes { get; set; } =
-        new Dictionary<string, object>()
-        {
-            { "required", "required" },
-            { "placeholder", "Child Component Placeholder" },
-            { "size", "100" },
-            { "maxlength", "15" }
+        new Dictionary<string, object>();
 
-            };
     [Parameter]
     public string Value { get; set; } = "Child Value";
 }
