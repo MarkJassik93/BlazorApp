@@ -6,11 +6,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System;
 using AutoMapper;
+using Microsoft.AspNetCore.Components.Authorization;
+using System.Net;
 
 namespace EmployeeManagement.Web.Pages
 {
     public class EditEmployeeBase : ComponentBase
     {
+        [CascadingParameter]
+        public Task<AuthenticationState> authenticationStateTask { get; set; }
+
         [Inject]
         public IEmployeeService EmployeeService { get; set; }
 
@@ -35,6 +40,14 @@ namespace EmployeeManagement.Web.Pages
 
         protected async override Task OnInitializedAsync()
         {
+            var authenticationState = await authenticationStateTask;
+
+            if (!authenticationState.User.Identity.IsAuthenticated)
+            {
+                string returnUrl = WebUtility.UrlEncode($"/editEmployee/{Id}");
+                NavigationManager.NavigateTo($"/identity/account/login?returnUrl={returnUrl}");
+            }
+
             int.TryParse(Id, out int employeeId);
 
             if (employeeId != 0)
